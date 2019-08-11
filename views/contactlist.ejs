@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title><%= locals.title%></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"/>
+        <link rel="stylesheet" href="css/home.css"/>
+        
+    </head>
+    <body>
+        <div id="container">
+
+       <div id="title-container">
+        <p>Contact List</p>
+       </div>
+       <div id="contact-List-container">
+
+       <table id="contact-list-table">
+           <tr>
+           <th>Name</th>
+           <th>Contact</th>
+           <th style="width: 10%">Action</th>
+           </tr>
+           <% for ( let i of contact_list ){%>
+           <tr>
+               <td><%= i.name %></td>
+               <td><%= i.phone %></td>
+               <td style="width: 10%"><a href="/delete-contact/<%= i.phone %>"><i class="fas fa-trash-alt"></i></a></td>    
+           </tr>
+           <% }%> 
+       </table>
+        
+    </div>
+    </div>
+        <form action='/create_contact' method="POST">
+            <input type="text" name="name"/>
+            <input type="text" name="phone"/>
+            <button type="submit">submit</button>
+        </form>
+    </body>
+</html>
